@@ -11,16 +11,23 @@ import {
   Text,
   View,
 } from 'react-native';
+import { swalah } from './src/store/store';
+import IntroduceSwalah from './src/screens/introductory_pages/IntroduceSwalah';
+import Home from './src/screens/Home/Home';
 
 
 
 
 function App(): React.JSX.Element {
 
+  const isUser = swalah((state) => state.user.is_authenticated);
+
+ 
+
   return (
-    <View className="flex-1 justify-center items-center  p-5 bg-stone-300">
-      <Text className='text-center '>Its time to pray</Text>
-    </View>
+    <>
+    {!isUser ? <IntroduceSwalah/>  : <Home/>}
+    </>
   );
 }
 
